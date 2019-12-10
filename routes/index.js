@@ -11,10 +11,12 @@ router.get('/', (req, res) => {
      */
 
     // Simple text formatted response.
-    res.send('on / route');
+    // res.send('on / route');
 
     // Responds with request query params.
     // res.json(req.query);
+
+    res.render('index');
 
 });
 
