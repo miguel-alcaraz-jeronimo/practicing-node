@@ -5,18 +5,18 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(name="viewport" content="width=device-width, initial-scale=1.0")
         meta(http-equiv="X-UA-Compatible" content="ie=edge")
-        title= `${title ? title : h.siteName}`
+        title #{title ? title : h.siteName}
     body
 
         header
-            block header
-                span default header
+            mark 
+                | Hello #{name}
+                | The day ends in #{h.moment().endOf('day').fromNow()}
 
         nav
-            block nav
-                ul
-                    each opt in h.navOptions
-                        li= opt.name
+            ul
+                each opt in h.navOptions
+                    li #{opt.name}
 
         main
             section
@@ -25,5 +25,4 @@ html(lang="en")
                         span default article
 
         footer
-            block footer
-                span default footer
+            span default footer

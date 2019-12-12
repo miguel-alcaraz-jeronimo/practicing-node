@@ -1,8 +1,10 @@
 const path = require('path');
+
 const express = require('express');
 
 const routes = require('./routes/index');
 const helpers = require('./helpers');
+const errorHandlers = require('./handlers/errorHandlers')
 
 // Create our Express app.
 const app = express();
@@ -19,6 +21,10 @@ app.use((req, res, next) => {
 
 // Routes are handled in ./routes/index.js file.
 app.use('/', routes);
+
+// Error Handler middleware.
+app.use(errorHandlers.notFound);
+app.use(errorHandlers.developmentErrors);
 
 // Export app, we can start the app in start.js file.
 module.exports = app;
