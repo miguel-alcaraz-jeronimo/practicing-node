@@ -1,6 +1,13 @@
+exports.homePageMiddleware = (req, res, next) => {
+    console.log('on homePage middkeware');
+    
+    req.query.name += ' :=)';
+    next();
+}
+
 exports.homePage = (req, res) => {
     console.log('on homePage controller');
-    
+
     /**
      * Request reference: https://expressjs.com/es/api.html#req
      * Response reference: https://expressjs.com/es/api.html#res
