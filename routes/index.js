@@ -16,7 +16,9 @@ router.get('/', (req, res) => {
     // Responds with request query params.
     // res.json(req.query);
 
-    res.render('index', { name: req.query.name });
+    res.render('index', {
+        name: req.query.name
+    });
 
 });
 
