@@ -1,6 +1,6 @@
 exports.homePageMiddleware = (req, res, next) => {
-    console.log('on homePage middkeware');
-    
+    console.log('on homePage middleware');
+
     req.query.name += ' :=)';
     next();
 }
