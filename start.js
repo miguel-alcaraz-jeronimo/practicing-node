@@ -1,5 +1,8 @@
 const app = require('./app');
 
+// Import all of our models.
+require('./models/model');
+
 // Set port.
 app.set('port', process.env.PORT || 3000);
 
