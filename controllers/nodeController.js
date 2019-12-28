@@ -23,3 +23,13 @@ exports.homePage = (req, res) => {
         name: req.query.name
     });
 }
+
+exports.addModel = (req, res) => {
+    res.render('editModel', {
+        title: 'Edit Model'
+    });
+}
+
+exports.createModel = (req, res) => {
+    res.json(req.body);
+}

@@ -6,6 +6,10 @@ const nodeController = require('../controllers/nodeController');
 // Root.
 router.get('/', nodeController.homePageMiddleware, nodeController.homePage);
 
+// Add
+router.get('/add', nodeController.addModel);
+router.post('/add', nodeController.createModel);
+
 // Reverse.
 router.get('/reverse/:name', (req, res) => {
     console.log('on /reverse route');
