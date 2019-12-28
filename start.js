@@ -1,4 +1,3 @@
-const app = require('./app');
 const mongoose = require('mongoose');
 
 // import environmental variables from our variables.env file
@@ -12,7 +11,9 @@ mongoose.connection.on('error', (err) => {
 });
 
 // Import all of our models.
-require('./models/model');
+require('./models/Model');
+
+const app = require('./app');
 
 // Set port.
 app.set('port', process.env.PORT || 3000);

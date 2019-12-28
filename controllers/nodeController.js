@@ -1,3 +1,6 @@
+const mongoose = require('mongoose');
+const Model = mongoose.model('Model');
+
 exports.homePageMiddleware = (req, res, next) => {
     console.log('on homePage middleware');
 
@@ -31,5 +34,7 @@ exports.addModel = (req, res) => {
 }
 
 exports.createModel = (req, res) => {
+    const model = new Model(req.body);
+    model.save();
     res.json(req.body);
 }
