@@ -34,7 +34,7 @@ exports.addModel = (req, res) => {
 }
 
 exports.createModel = async(req, res) => {
-    const model = new Model(req.body);
-    await model.save();
-    res.redirect('/');
+    const model = await (new Model(req.body)).save();
+    req.flash('success', `Successfully Created ${model.name}.`);
+    res.redirect(`/model/${model.slug}`);
 }

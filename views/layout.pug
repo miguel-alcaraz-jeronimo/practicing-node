@@ -18,6 +18,14 @@ html(lang="en")
                 each opt in h.navOptions
                     li #{opt.name}
 
+        block messages
+            if locals.flashes
+                - const categories = Object.keys(locals.flashes)
+                each category in categories
+                    each message in flashes[category]
+                        div(class=category)
+                            p!= message
+
         main
             section
                 block section

@@ -1,6 +1,8 @@
 const path = require('path');
 const express = require('express');
+const session = require('express-session');
 const bodyParser = require('body-parser');
+const flash = require('connect-flash');
 
 const routes = require('./routes/index');
 const helpers = require('./helpers');
@@ -17,9 +19,20 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+app.use(session({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: false
+}));
+
+/* The flash middleware let's us use req.flash('error', 'Shit!'),
+which will then pass that message to the next page the user requests */
+app.use(flash());
+
 // Pass variables to all request.
 app.use((req, res, next) => {
     res.locals.h = helpers;
+    res.locals.flashes = req.flash();
     next();
 })
 
