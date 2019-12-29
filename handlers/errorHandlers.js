@@ -1,8 +1,6 @@
 // http://expressjs.com/en/guide/error-handling.html#error-handling
 
-
 // Catch Errors Handle with async/await
-
 exports.catchErrors = (fn) => {
     return function(req, res, next) {
         return fn(req, res, next).catch(next);
