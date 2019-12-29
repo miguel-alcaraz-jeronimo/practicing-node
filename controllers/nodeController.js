@@ -33,8 +33,8 @@ exports.addModel = (req, res) => {
     });
 }
 
-exports.createModel = (req, res) => {
+exports.createModel = async(req, res) => {
     const model = new Model(req.body);
-    model.save();
-    res.json(req.body);
+    await model.save();
+    res.redirect('/');
 }

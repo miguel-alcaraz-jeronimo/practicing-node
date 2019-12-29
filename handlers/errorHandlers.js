@@ -1,5 +1,14 @@
 // http://expressjs.com/en/guide/error-handling.html#error-handling
 
+
+// Catch Errors Handle with async/await
+
+exports.catchErrors = (fn) => {
+    return function(req, res, next) {
+        return fn(req, res, next).catch(next);
+    };
+};
+
 // Not Found Error Handler
 exports.notFound = (req, res, next) => {
     console.log('on not found error handler');
