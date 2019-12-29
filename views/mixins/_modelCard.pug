@@ -2,3 +2,4 @@ mixin modelCard(model = {})
     div
         h3= model.name
         p= model.description
+        a(href=`/models/${model.id}/edit`) edit

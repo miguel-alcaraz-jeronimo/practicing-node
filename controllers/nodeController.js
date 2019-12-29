@@ -43,3 +43,17 @@ exports.getModels = async(req, res) => {
     const models = await Model.find();
     res.render('models', { title: 'models', models });
 }
+
+exports.editModel = async(req, res) => {
+    const model = await Model.findOne({ _id: req.params.id });
+    res.render('editModel', { title: `Edit ${model.name}`, model });
+};
+
+exports.updateModel = async(req, res) => {
+    const model = await Model.findOneAndUpdate({ _id: req.params.id }, req.body, {
+        new: true,
+        runValidators: true
+    }).exec();
+    req.flash('success', `Successfully updated <strong>${model.name}</strong>. <a href="/models/${model.slug}">View Model →</a>`);
+    res.redirect(`/models/${model._id}/edit`);
+};

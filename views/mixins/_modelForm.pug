@@ -1,18 +1,19 @@
 mixin modelForm(model = {})
 
-    form(action="/add" method="POST")
+    form(action=`/add/${model.id || '' }` method="POST")
 
         label(for="name") Name
-        input(type="text" name="name" id="name")
+        input(type="text" name="name" id="name" value=model.name)
 
         label(for="description") Description
-        textarea(name="description" id="description")
+        textarea(name="description" id="description")= model.description
 
         - const choices = ['Wifi', 'Open Late', 'Family Friendly', 'Vegetarian', 'Licensed']
+        -const tags = model.tags || []
         ul
             each choice in choices
                 li
-                    input(type="checkbox" id=choice value=choice name="tags")
+                    input(type="checkbox" id=choice value=choice name="tags" checked=(tags.includes(choice)))
                     label(for=choice) #{choice}
 
         input(type="submit" value="Save →" class="button")

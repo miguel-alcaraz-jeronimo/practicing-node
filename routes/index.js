@@ -10,9 +10,15 @@ router.get('/', nodeController.homePageMiddleware, nodeController.homePage);
 // Get Models
 router.get('/models', catchErrors(nodeController.getModels));
 
+// Edit Model
+router.get('/models/:id/edit', catchErrors(nodeController.editModel));
+
 // Add
 router.get('/add', nodeController.addModel);
 router.post('/add', catchErrors(nodeController.createModel));
+
+//Update
+router.post('/add/:id', catchErrors(nodeController.updateModel));
 
 // Reverse
 router.get('/reverse/:name', (req, res) => {

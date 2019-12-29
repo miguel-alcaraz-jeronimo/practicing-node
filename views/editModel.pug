@@ -2,7 +2,8 @@ extends layout
 
 include mixins/_modelForm
 
+
 block section
     div
         h2=title
-        +modelForm()
+        +modelForm(model)
