@@ -38,3 +38,8 @@ exports.createModel = async(req, res) => {
     req.flash('success', `Successfully Created ${model.name}.`);
     res.redirect(`/model/${model.slug}`);
 }
+
+exports.getModels = async(req, res) => {
+    const models = await Model.find();
+    res.render('models', { title: 'models', models });
+}

@@ -4,14 +4,17 @@ const router = express.Router();
 const nodeController = require('../controllers/nodeController');
 const { catchErrors } = require('../handlers/errorHandlers');
 
-// Root.
+// Root
 router.get('/', nodeController.homePageMiddleware, nodeController.homePage);
+
+// Get Models
+router.get('/models', catchErrors(nodeController.getModels));
 
 // Add
 router.get('/add', nodeController.addModel);
 router.post('/add', catchErrors(nodeController.createModel));
 
-// Reverse.
+// Reverse
 router.get('/reverse/:name', (req, res) => {
     console.log('on /reverse route');
 
